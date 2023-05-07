@@ -8,9 +8,11 @@ sudo ln -s $(which nvim) /usr/bin/vim
 brew install tmux
 
 cd ~/
-git clone https://github.com/ItzNesbroDev/dotfiles
+git clone https://github.com/ItzNesbroDev/dotfiles ~/dotfiles
 mv ~/dotfiles/.config/nvim ~/.config/nvim
 mv ~/dotfiles/.tm* ~/
+sudo rm ~/.gitconfig
+mv ~/dotfiles/.gitconfig ~/.gitconfig
 
 zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
 rm -rf ~/.zshrc
