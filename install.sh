@@ -11,11 +11,10 @@ cd ~/
 git clone https://github.com/ItzNesbroDev/dotfiles ~/dotfiles
 mv ~/dotfiles/.config/nvim ~/.config/nvim
 mv ~/dotfiles/.tm* ~/
-sudo rm ~/.gitconfig
-mv ~/dotfiles/.gitconfig ~/.gitconfig
 
-zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
+echo "zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1" >> ~/.zapscript
 rm -rf ~/.zshrc
+curl -sS https://starship.rs/install.sh | sh
 
 echo '# Define useful aliases
 alias cl="clear"
@@ -28,8 +27,4 @@ plug "zap-zsh/supercharge"
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting" "122dc46"
 
-# Define prompt settings
-typeset -A __Prompt
-__Prompt[ITALIC_ON]=$'\e[3m'
-__Prompt[ITALIC_OFF]=$'\e[23m'
-plug "zap-zsh/singularisart-prompt"' >>~/.zshrc
+eval "$(starship init zsh)" ' >>~/.zshrc
