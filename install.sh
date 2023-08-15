@@ -1,30 +1,55 @@
 #!/bin/bash
 
-sudo rm $(which vim)
+# Install neovim
+sudo apt-get remove --purge vim -y
 sudo add-apt-repository ppa:neovim-ppa/unstable --yes
 sudo apt-get update -y
 sudo apt-get install neovim -y
 sudo ln -s $(which nvim) /usr/bin/vim
-brew install tmux
 
+# Install tmux
+sudo apt-get install tmux -y
+
+# Install exa
+sudo apt install exa -y
+
+# Install Oh My Zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Clone and setup dotfiles
 cd ~/
 git clone https://github.com/ItzNesbroDev/dotfiles ~/dotfiles
 mv ~/dotfiles/.config/nvim ~/.config/nvim
-mv ~/dotfiles/.tm* ~/
+rm -rf ~/.config/tmux
+mv ~/dotfiles/.config/tmux ~/.config/tmux
 
-echo "zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1" >> ~/.zapscript
-rm -rf ~/.zshrc
-curl -sS https://starship.rs/install.sh | sh
-
-echo '# Define useful aliases
+# Update zshrc with aliases and plugins
+echo '
+# Define useful aliases
 alias cl="clear"
-alias ll="exa -l -g"
-alias ll="ll -a"
+alias ll="exa -l -g --icons"
+alias la="ll -a"
 alias g="git"
+alias gc="git add . && czg"
 
-# Install Zsh plugins
-plug "zap-zsh/supercharge"
-plug "zsh-users/zsh-autosuggestions"
-plug "zsh-users/zsh-syntax-highlighting" "122dc46"
+# Load zsh plugins
+plugins=(
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
 
-eval "$(starship init zsh)" ' >>~/.zshrc
+source $ZSH/oh-my-zsh.sh
+' >> ~/.zshrc
+
+# Install zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+
+# Install zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+
+# Source the updated zshrc
+source ~/.zshrc
+
+# install czg
+npm i -g czg
