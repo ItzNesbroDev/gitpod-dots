@@ -10,8 +10,8 @@ sudo ln -s $(which nvim) /usr/bin/vim
 # Install tmux
 sudo apt-get install tmux -y
 
-# Install exa
-sudo apt install exa -y
+# Install eza
+sudo apt install eza  -y
 
 # Install Oh My Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -27,7 +27,7 @@ mv ~/dotfiles/.config/tmux ~/.config/tmux
 echo '
 # Define useful aliases
 alias cl="clear"
-alias ll="exa -l -g --icons"
+alias ll="eza -l -g --icons"
 alias la="ll -a"
 alias g="git"
 alias gc="git add . && czg"
@@ -53,3 +53,4 @@ source ~/.zshrc
 
 # install czg
 npm i -g czg
+npm i -g minimal-git-cz
