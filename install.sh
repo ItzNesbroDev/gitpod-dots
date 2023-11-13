@@ -54,3 +54,8 @@ source ~/.zshrc
 # install czg
 npm i -g czg
 npm i -g minimal-git-cz
+
+wget https://github.com/glotlabs/gdrive/releases/download/3.9.0/gdrive_linux-x64.tar.gz -O ~/gdrive.tar.gz
+cd ~/
+tar -xf gdrive.tar.gz
+sudo mv gdrive /usr/bin/
