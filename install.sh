@@ -54,3 +54,5 @@ source ~/.zshrc
 # install czg
 npm i -g czg
 npm i -g minimal-git-cz
+
+# sgp_a0d7ccb4f752ea73_5c10ad6191787dcb7581c463247acf00d15a13b2
