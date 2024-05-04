@@ -2,9 +2,7 @@
 
 # Install neovim
 sudo apt-get remove --purge vim -y
-sudo add-apt-repository ppa:neovim-ppa/stable --yes
-sudo apt-get update -y
-sudo apt-get install neovim -y
+brew install neovim -y
 sudo ln -s $(which nvim) /usr/bin/vim
 
 # Install tmux
@@ -54,5 +52,3 @@ source ~/.zshrc
 # install czg
 npm i -g czg
 npm i -g minimal-git-cz
-
-# sgp_a0d7ccb4f752ea73_5c10ad6191787dcb7581c463247acf00d15a13b2
